@@ -46,3 +46,29 @@
   padding: 10px;
   border-radius: 20px;
 }
+
+
+
+.glimmer-panel {
+  padding: 20px;
+}
+
+.glimmer-line {
+  height: 20px;
+  background: #eee;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-color: #eee;
+  }
+  50% {
+    background-color: #ddd;
+  }
+  100% {
+    background-color: #eee;
+  }
+}

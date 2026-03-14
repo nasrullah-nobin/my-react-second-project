@@ -1,51 +1,39 @@
 import { useState } from "react";
 
-export default () => {
-  const [run, setRun] = useState(0);
+export default function Batsman() {
+  const [runs, setRuns] = useState(0);
   const [four, setFour] = useState(0);
   const [six, setSix] = useState(0);
-
-  const mathHandle = (id) => {
-    if (id === "run") {
-      setRun((prev) => (prev += 1));
-      return;
+  const startPlay = (type) => {
+    if (type === "run") {
+      setRuns((priv) => priv + 1);
     }
-    if (id === "four") {
-      setRun((prev) => (prev += 4));
-      setFour((prev) => (prev += 1));
-      return;
+    if (type === "four") {
+      setRuns((priv) => priv + 4);
+      setFour((priv) => priv + 1);
     }
-    if (id === "six") {
-      setRun((prev) => (prev += 4));
-      setSix((prev) => (prev += 1));
-      return;
+    if (type === "six") {
+      setRuns((priv) => priv + 6);
+      setSix((priv) => priv + 1);
     }
   };
-
   return (
-    <div
-      style={{
-        border: "3px solid yellow",
-        borderRadius: "20px",
-        padding: "20px",
-      }}
-    >
-      <h3>Tamim Iqbal</h3>
-      <h1>score: {run}</h1>
+    <div className="card">
+      <h3>Shakib al hasan</h3>
+      {runs > 50 && <p>🎉 Congratulations Your score 50</p>}
+      <h2>Total Score: {runs}</h2>
       <p>
-        Total Four: {four} Total Six: {six}{" "}
+        Four: {four} six: {six}
       </p>
-      <button onClick={()=> mathHandle('run')} style={{ marginLeft: "10px", background: "yellow" }}>Run</button>
-      <button onClick={()=> mathHandle('four')}
-        style={{ marginLeft: "10px", color: "white", background: "green" }}
-      >
-        four
+      <button onClick={() => startPlay("run")} style={{ marginLeft: "10px" }}>
+        Run
       </button>
-      <button onClick={()=> mathHandle('six')}
-        style={{ marginLeft: "10px", color: "white", background: "purple" }}
-      >
+      <button onClick={() => startPlay("four")} style={{ marginLeft: "10px" }}>
+        Four
+      </button>
+      <button onClick={() => startPlay("six")} style={{ marginLeft: "10px" }}>
         Six
       </button>
     </div>
   );
-};
+}
